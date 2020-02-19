@@ -22,17 +22,23 @@ namespace ConsoleApp2
         
         public void Add(T value)
         {
-            Storage[index++] = value;
+            if (index < Storage.Length)
+                Storage[index++] = value;
+            else
+                throw new IndexOutOfRangeException();
         }
 
         public void Swap(int x, int y)
         {
-            T tmp = Storage[x];
-            Storage[x] = Storage[y];
-            Storage[y] = tmp;
+            if (x >= 0 && x < Storage.Length && y >= 0 && y < Storage.Length)
+            {
+                T tmp = Storage[x];
+                Storage[x] = Storage[y];
+                Storage[y] = tmp;
+            }
+            else
+                throw new IndexOutOfRangeException();
         }
-
-
 
         IEnumerator IEnumerable.GetEnumerator()
         {
