@@ -62,7 +62,7 @@ namespace ConsoleApp3
             List<int> ls = new List<int>() { 1, 2, 3, 4, 5, 6, 8 };
 
             //Generic Repository
-            MyRepo repo = new MyRepo();
+            AnnoucementsRepo repo = new AnnoucementsRepo();
             repo.Insert(phoneannoucement1);
             repo.Insert(carannoucement1);
             foreach (var item in repo.GetAll())
@@ -85,6 +85,12 @@ namespace ConsoleApp3
                 Console.WriteLine(item.Text);
             }
 
+            // Get By user
+            Console.WriteLine("Get by user");
+            foreach (var item in repo.GetByUserName("Vasea"))
+            {
+                Console.WriteLine(item);
+            } 
 
 
         }
