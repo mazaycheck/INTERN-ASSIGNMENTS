@@ -4,8 +4,8 @@ using System.Text;
 
 namespace ConsoleApp3
 {
-    interface IEntity<U>
+    interface IEntity<TId>
     {
-        public U Id { get; set; }
+        public TId Id { get; set; }
     }
 }

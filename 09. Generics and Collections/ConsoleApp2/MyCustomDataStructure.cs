@@ -9,15 +9,17 @@ namespace ConsoleApp2
     {
         private T[] Storage;
         private int index = 0;
+        private int size;
 
         public T this[int i] { 
-            get { return Storage[i]; }
-            set { Storage[i] = value; }
+            get { if (i >= 0 && i < size) return Storage[i]; else throw new IndexOutOfRangeException();}
+            set { if (i >= 0 && i < size)  Storage[i] = value; else throw new IndexOutOfRangeException();}
         }
 
         public MyCustomDataStructure(int size) 
         {
             Storage = new T[size];
+            this.size = size;
         }
         
         public void Add(T value)

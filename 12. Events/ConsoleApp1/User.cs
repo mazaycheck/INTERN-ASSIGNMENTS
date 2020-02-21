@@ -6,10 +6,12 @@ namespace ConsoleApp1
 {
     class User
     {
+        private List<Annoucement> listOfUserAnnoucements;
         public string Name { get; set; }
         public User(string name)
         {
             Name = name;
+            listOfUserAnnoucements = new List<Annoucement>();
         }
 
         private void OnAnnoucementPost(object sender, AnnoucementEventArgs e)
@@ -32,6 +34,17 @@ namespace ConsoleApp1
         public void UnSubscribeToCategory(Category cat)
         {
             cat.NewAnnoucementPost -= OnAnnoucementPost;
+        }
+
+        public void PostNewAnnoucement(Annoucement annoucement)
+        {
+            annoucement.User = this;
+            listOfUserAnnoucements.Add(annoucement);
+        }
+
+        public List<Annoucement> GetListOfUserAnnoucements()
+        {
+            return listOfUserAnnoucements;
         }
     }
 }

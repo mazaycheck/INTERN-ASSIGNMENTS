@@ -26,10 +26,10 @@ namespace ConsoleApp3
             AutoId++;
             Id = AutoId;
         }
-        static Annoucement()
-        {
-            AutoId = 0;
-        }
+        //static Annoucement()
+        //{
+        //    AutoId = 0;
+        //}
 
         public override string ToString()
         {

@@ -12,6 +12,7 @@ namespace ConsoleApp1
         public Category Category { get; set; }
         public int Price { get; set; }
         public Annoucement(Category cat, string title)
+
         {
             Category = cat;
             Title = title;

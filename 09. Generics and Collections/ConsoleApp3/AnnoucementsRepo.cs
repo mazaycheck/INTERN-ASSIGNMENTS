@@ -9,7 +9,7 @@ namespace ConsoleApp3
     {
         public IEnumerable<Annoucement> GetByUserName(string username)
         {
-            return base.GetAll().Where(m => m.User.Name == username);
+            return GetAll().Where(m => m.User.Name == username);
         }
     }
 }

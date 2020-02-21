@@ -6,38 +6,38 @@ using System.Collections;
 
 namespace ConsoleApp3
 {
-    class GenericRepository<T,U> : IGenericRepository<T,U> where T : IEntity<U>
+    class GenericRepository<T,TId> : IGenericRepository<T,TId> where T : IEntity<TId>
     {
-        private List<T> Storage;
+        private readonly List<T> _storage;
 
         public GenericRepository()
         {
-            Storage = new List<T>();
+            _storage = new List<T>();
         }
-        public void Delete(U id)
+        public void Delete(TId id)
         {
-            var item = Storage.FirstOrDefault(m => m.Id.Equals(id));
-            Storage.Remove(item);
+            var item = _storage.FirstOrDefault(m => m.Id.Equals(id));
+            _storage.Remove(item);
         }
 
         public IEnumerable<T> GetAll()
         {
-            return Storage;
+            return _storage;
         }
 
-        public T GetById(U id)
+        public T GetById(TId id)
         {
-            return Storage.FirstOrDefault(m => m.Id.Equals(id));
+            return _storage.FirstOrDefault(m => m.Id.Equals(id));
         }
 
         public void Insert(T obj)
         {
-            Storage.Add(obj);
+            _storage.Add(obj);
         }
 
         public void Update(T obj)
         {
-            var item = Storage.FirstOrDefault(m => m.Id.Equals(obj.Id));
+            var item = _storage.FirstOrDefault(m => m.Id.Equals(obj.Id));
             item = obj;
             
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace ConsoleApp1
 {
@@ -8,16 +9,21 @@ namespace ConsoleApp1
         {
             User vasea = new User("Vasea");
             User iura = new User("Iura");
+
             Category cars = new Category("Cars");
             Category computers = new Category("Computers");
             Category sneakers = new Category("Sneakers");
+
             vasea.SubscribeToCategory(cars);
             iura.SubscribeToCategory(computers);
             iura.SubscribeToCategory(cars);
 
-            Annoucement a1 = new Annoucement(cars, "BMW for sale") { Text = "Good condition 2.0 diesel", Price = 5000, User = vasea };
-            Annoucement a2 = new Annoucement(computers, "Laptop for sale") { Text = "Apple macbook",Price = 300, User = iura };
-            Annoucement a3 = new Annoucement(sneakers, "Adidas for sale") { Text = "Brand new",Price = 75, User = iura };
+            vasea.PostNewAnnoucement(new Annoucement(cars, "BMW for sale") { Text = "Good condition 2.0 diesel", Price = 5000 });
+            iura.PostNewAnnoucement(new Annoucement(computers, "Laptop for sale") { Text = "Apple macbook", Price = 300 });
+            iura.PostNewAnnoucement(new Annoucement(sneakers, "Adidas for sale") { Text = "Brand new", Price = 75 });
+
+            //foreach (var item in iura.GetListOfUserAnnoucements()) Console.WriteLine($"{item.Title} : {item.Price}");
+
         }
     }
 }

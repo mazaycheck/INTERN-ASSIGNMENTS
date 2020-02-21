@@ -5,12 +5,12 @@ using System.Text;
 
 namespace ConsoleApp3
 {
-    interface IGenericRepository<T,U> where T : IEntity<U>
+    interface IGenericRepository<T, TId> where T : IEntity<TId>
     {
         IEnumerable<T> GetAll();
-        T GetById(U id);
+        T GetById(TId id);
         void Insert(T obj);
         void Update(T obj);
-        void Delete(U id);
+        void Delete(TId id);
     }
 }
