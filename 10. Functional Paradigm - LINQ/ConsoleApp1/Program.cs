@@ -32,8 +32,10 @@ namespace ConsoleApp1
             bool LessThen(Annoucement a, int price) { return a.Price < price; }
             var lessthenfunc = new MyFilterDelegate(LessThen);
             var filtered1 = allannoucements.Where(m => lessthenfunc(m, 400));
+
             //Using anonimous functions delegates
             var filtered2 = allannoucements.Where(delegate(Annoucement a) { return a.Price < 400; });
+
             //Using lambda funcitons
             var filtered3 = allannoucements.Where(a => a.Price < 400 );
             foreach (var item in filtered3)

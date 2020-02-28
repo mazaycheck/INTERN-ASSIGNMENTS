@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
-using System.IO;
-
 
 namespace ConsoleApp2
 {
@@ -13,13 +11,9 @@ namespace ConsoleApp2
         private static readonly object padlock = new object();
 
         public List<Advert> AdvertList;
-
-  
-
         private BulletinBoard()
         {
             AdvertList = new List<Advert>();
-            
         }
         public static BulletinBoard GetInstance()
         {
@@ -43,8 +37,6 @@ namespace ConsoleApp2
                 ad.SetUser(user);
                 AdvertList.Add(ad);                
                 $"{ad.Title} Posted".Print(ConsoleColor.Yellow);
-
- 
                 return true;
             }
             else
@@ -59,7 +51,5 @@ namespace ConsoleApp2
         {
             return AdvertList.Any(x => (x.User == user && (ad.Date - x.Date) < TimeSpan.FromHours(24)));
         }
-
-
     }
 }

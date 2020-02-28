@@ -8,7 +8,7 @@ namespace ConsoleApp2
     {
         public static void SendMessage(this User user, string message)
         {
- 
+
         }
     }
 }

@@ -43,9 +43,7 @@ namespace ConsoleApp2
 
         public override string ToString()
         {
-            return $"\nTitle:{Title.PadRight(10)},  \u23F0 \nDate:{Date}, \uFDFD \nUser : {User.Name}, \nPrice : {Price} ,  \nText: {Text.PadRight(20)} \u0A74  \u1FAD \u2188  \n";
+            return $"\nTitle:{Title.PadRight(10)},  \u23F0 Date:{Date}, \uFDFD User : {User.Name}, \nText: {Text.PadRight(20)} \u0A74  \u1FAD \u2188  \n";
         }
-
-        
     }
 }

@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
 
 namespace ConsoleApp2
 {
-    public static class MyExtensions
+    class CharacterEncoder
     {
-        public static void SendMessage(this User user, string message)
+        
+        public CharacterEncoder()
         {
- 
+            
         }
+     
+
     }
 }

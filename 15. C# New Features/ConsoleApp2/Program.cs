@@ -10,18 +10,17 @@ namespace ConsoleApp2
         static void Main(string[] args)
         {
             BulletinBoard Board = BulletinBoard.GetInstance();
-
+            //dynamic adfsdfsafsadf = "";
+            //adfsdfsafsadf.PRIVETVASEA();
             User Vasea = new User(name:"Vasea", phone: "06454778");
             User Iura = new User(name:"Iura", phone: 564879878);
             User Anna = new User(name:"Anna", phone: false);
             User Nina = new User(name:"Nina", phone: 234234.12);
 
-
             string VaseaNum = Vasea.Phone;
             int IuraNum = Iura.Phone;
             bool AnnaNum = Anna.Phone;
             double NinaNum = Nina.Phone;
-
 
             Vasea.SendMessage(to : Iura, text: "Hello");
             Vasea.SendMessage(to : Iura);
@@ -43,11 +42,7 @@ namespace ConsoleApp2
                 Console.WriteLine("Price must be positive!");
             }
 
-
-
-            foreach (var item in Iura.MessageBox) Console.WriteLine(item);
-
-                                
+            foreach (var item in Iura.MessageBox) Console.WriteLine(item);                                
         }
     }
 }

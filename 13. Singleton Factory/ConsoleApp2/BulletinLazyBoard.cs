@@ -2,38 +2,20 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
-using System.IO;
-
 
 namespace ConsoleApp2
 {
-    public class BulletinBoard
+    public sealed class BulletinLazyBoard
     {
-        private static BulletinBoard _instance;
-        private static readonly object padlock = new object();
+        private static readonly Lazy<BulletinLazyBoard> lazy = new Lazy<BulletinLazyBoard>(() => new BulletinLazyBoard(), true);
 
         public List<Advert> AdvertList;
 
-  
+        public static BulletinLazyBoard Instance { get { return lazy.Value; } }
 
-        private BulletinBoard()
+        private BulletinLazyBoard()
         {
             AdvertList = new List<Advert>();
-            
-        }
-        public static BulletinBoard GetInstance()
-        {
-            if(_instance == null)
-            {
-                lock (padlock)
-                {
-                    if(_instance == null)
-                    {
-                        _instance = new BulletinBoard();
-                    }
-                }
-            }
-            return _instance;
         }
 
         public bool PostAdvert(User user, Advert ad)
@@ -41,10 +23,8 @@ namespace ConsoleApp2
             if (!CheckIfUserPostedMoreThanOneADay(user, ad))
             {
                 ad.SetUser(user);
-                AdvertList.Add(ad);                
+                AdvertList.Add(ad);
                 $"{ad.Title} Posted".Print(ConsoleColor.Yellow);
-
- 
                 return true;
             }
             else
@@ -59,7 +39,5 @@ namespace ConsoleApp2
         {
             return AdvertList.Any(x => (x.User == user && (ad.Date - x.Date) < TimeSpan.FromHours(24)));
         }
-
-
     }
 }

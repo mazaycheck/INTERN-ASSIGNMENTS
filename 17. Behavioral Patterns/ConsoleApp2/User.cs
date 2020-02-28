@@ -6,7 +6,7 @@ using System.Globalization;
 
 namespace ConsoleApp2
 {
-    public class User
+    public class User : IObserver
     {
         public EventHandler<Message> MessageRecieved;
         
@@ -39,7 +39,13 @@ namespace ConsoleApp2
             Console.WriteLine($"{Name} ! You recieved a new message FROM : {message.From.Name} TIME : {message.Date.ToString(CultureInfo.CreateSpecificCulture("en-US"))}");
             MessageBox.Add(message);
         }
-        
 
+
+        public void Update(Categories cat)
+        {
+            Console.WriteLine($"New advert in {cat} category!");
+        }
+
+  
     }
 }

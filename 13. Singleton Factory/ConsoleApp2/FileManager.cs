@@ -43,27 +43,8 @@ namespace ConsoleApp2
                 fs.Seek(fs.Length,SeekOrigin.Begin);
                 fs.Write(data);
             }
-        }        
-        public static void WriteData(string filename, byte[] data)
-        {
-            using (FileStream fs = File.Create(filename))
-            {          
-                fs.Write(data);
-            }
         }
 
-        public static void AppendToFile(string text, string filename, Encoding encoding)
-        {
-            byte[] data = encoding.GetBytes(text);
-            if (!File.Exists(filename))
-            {
-                FileManager.CreateFile(filename); 
-                File.SetAttributes(filename, FileAttributes.Normal);
-
-            }
-
-            FileManager.AppendData(filename, data);            
-        }        
         public static void WriteToFile(string text, string filename, Encoding encoding)
         {
             byte[] data = encoding.GetBytes(text);
@@ -74,7 +55,7 @@ namespace ConsoleApp2
 
             }
 
-            FileManager.WriteData(filename, data);            
+            FileManager.AppendData(filename, data);            
         }
 
         public static byte[] ReadDataFromFile(string filename)

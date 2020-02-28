@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
-using System.Globalization;
 
 namespace ConsoleApp2
 {
@@ -36,7 +35,7 @@ namespace ConsoleApp2
 
         public void OnMessageRecieved(object sender, Message message)
         {
-            Console.WriteLine($"{Name} ! You recieved a new message FROM : {message.From.Name} TIME : {message.Date.ToString(CultureInfo.CreateSpecificCulture("en-US"))}");
+            Console.WriteLine($"{Name} ! You recieved a new message FROM : {message.From.Name} TIME : {message.Date}");
             MessageBox.Add(message);
         }
         
